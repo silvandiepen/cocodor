@@ -1,0 +1,127 @@
+// main styles
+@import
+  "functions",
+  "mixins",
+  "colors",
+  "base",
+  "typography",
+  "slick",
+  "grid",
+  "style";
+
+
+body{
+	background-color: white; font-family: $main-font-family;
+}
+
+section{
+	&#start{
+		transition: background-color $transition; width: 100%; height: 100%; position: absolute;
+		.center{
+			@media #{$small-only}{
+				padding: 0 100px;
+			}
+			&:before{
+				position: absolute; top: 0; left: 50%; background-color: color(Black); content: ""; width: 50%; height: 3rem; transform: translate(-50%,25%); border-radius: 50%; box-shadow: 0 0 50px 0 color(Black,0.5);
+			}
+			position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%);
+			.col{
+				position: relative;
+			}
+			input.main{
+				width: 100%; position: relative; z-index: 2; border: none; font-size: 2rem; transition: $transition;
+			}
+			span.type{
+				border-radius: 50%; background-color: color(Black,0.25); display: block; width: 2rem; height: 2rem; display: block; position: absolute; right: 1rem; top: 1rem; overflow: hidden; z-index: 2; transform: scale(0); transition: $transition;
+				&:before, &:after{
+					text-align: center; font-size: 1rem; font-weight: $font-bold; line-height: 2rem; content: ""; display: block; position: absolute; left: 0; height: 100%; width: 100%; top: 0; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%) rotate(0deg) scale(1); transition: $transition;
+				}
+				&:before{
+					transition: transform $transition $transition;
+				}
+				&:after{
+					transition: transform $transition #{$transition-time*2}s;
+				}
+				&.hex{
+					transform: scale(1);
+					&:before, &:after{
+						width: 0.25rem; height: 0.75rem; border-left: 2px solid color(White); border-right: 2px solid color(White);
+					}
+					&:before{
+						transform: translate(-50%,-50%) rotate(90deg) scale(1);
+					}
+				}
+				&.rgb{
+					transform: scale(1); background-color: red;
+					&:before{
+						background-color: green; width: 66%; height: 66%; border-radius: 50%;
+					}
+					&:after{
+						background-color: blue; width: 33%; height: 33%; border-radius: 50%;
+					}
+				}
+				&.cmyk{
+					transform: scale(1); background-color: cyan;
+					&:before{
+						background-color: magenta; width: 75%; height: 75%; border-radius: 50%;
+					}
+					&:after{
+						background-color: black; width: 50%; height: 50%; border-radius: 50%; box-shadow: 0 0 0 0.2rem yellow inset;
+					}
+				}
+			}
+			.results{
+				position: relative; z-index: 1; border-radius: $border-radius; background: color(Black,0.8); box-shadow: 0 0 10px 0 color(Black,0.1); margin-top: 1rem; padding: 1rem; transform: translateY(-50%); opacity: 0; transition: $transition; color: color(White);
+				&.show{
+					transform: translateY(0%); opacity: 1;
+				}
+				table{
+					width: 100%;
+					tr{
+						&:last-child{
+							td{
+								border-bottom: 0;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.saved{
+	position: absolute; top: 0.5rem; right: 0.5rem; font-size: 0rem;
+	ul{
+		box-shadow: 0 0 10px 0 rgba(black,0.15); font-size: 0rem; display: inline-block; margin-right: 0.5rem; border-radius: $border-radius;
+		li{
+			animation: comeIn $transition forwards; transform: scale(0);
+			@at-root{
+				@include keyframes(comeIn){
+					to{
+						transform: scale(1);
+					}
+				}
+			}
+			overflow: hidden; display: inline-block;
+			.color{
+				display: block; width: 2rem; height: 2rem;
+			}
+			&:first-child{
+				border-radius: $border-radius 0 0 $border-radius;
+			}
+			&:last-child{
+				border-radius: 0 $border-radius $border-radius 0;
+			}
+		}
+	}
+	.save{
+		display: inline-block; width: 2rem; height: 2rem; background-color: color(Black,0.8); position: relative; border-radius: 50%;
+		&:before, &:after{
+			content: ""; display: block; width: 0.75rem; height: 2px; position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%) rotate(0deg); background-color: white;
+		}
+		&:before{
+			transform: translate(-50%,-50%) rotate(90deg);
+		}
+	}
+}

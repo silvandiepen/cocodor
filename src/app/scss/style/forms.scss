@@ -1,0 +1,50 @@
+$default-min-width: 15rem; $default-border-radius: 0.2rem;
+
+%default-input{
+	border-radius: $default-border-radius; width: auto; border: 1px solid color(Black,0.25); font-size: 1rem; min-width: $default-min-width;
+	&:focus{
+		border-color: color(Blue,0.5);
+		@include placeholder(){
+			opacity: 0;
+		}
+	}
+	@include placeholder(){
+		opacity: 0.5;
+	}
+}
+
+form{
+	input{
+		box-sizing: border-box;
+	}
+	// Default type inputs
+	input[type="text"], input[type="text"], input[type="text"], input[type="text"], input[type="text"], textarea, select{
+		line-height: 1.5; padding: 0.5rem 0.75rem;
+		@extend %default-input;
+	}
+
+	// Input submit
+	button, input[type="submit"]{
+		@extend %default-btn;
+	}
+
+	// The Label
+	label{
+		width: auto; min-width: $default-min-width; display: block;
+		&+input, &+select, &+textarea{
+			margin-top: 0.5rem;
+		}
+	}
+
+	// Spacing of elements
+	textarea, select, input{
+		&+label{
+			margin-top: 1rem;
+		}
+	}
+
+	// Textarea specific
+	textarea{
+		min-height: $default-min-width/2; resize: none;
+	}
+}

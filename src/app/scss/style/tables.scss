@@ -1,0 +1,49 @@
+table{
+	width: 100%; border-collapse: separate; border-spacing: 0;
+	tr{
+		td, th{
+			text-align: left; padding: 0.5rem 1rem;
+		}
+		th{
+			font-weight: $font-bold;
+		}
+	}
+	thead{
+		visibility: visible;
+	}
+	tbody{
+		tr{
+			td{
+				border-bottom: 1px solid color(Black,0.1);
+				&:first-child{
+					border-radius: $border-radius  0 0 $border-radius;
+				}
+				&:last-child{
+					border-radius: 0 $border-radius $border-radius 0;
+				}
+			}
+		}
+	}
+	&.odd{
+		tbody{
+			tr{
+				&:nth-child(odd){
+					td{
+						border: 0; background-color: color(Black,0.1);
+					}
+				}
+			}
+		}
+	}
+	&.even{
+		tbody{
+			tr{
+				&:nth-child(even){
+					td{
+						border: 0; background-color: color(Black,0.25);
+					}
+				}
+			}
+		}
+	}
+}

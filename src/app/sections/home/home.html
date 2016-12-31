@@ -1,0 +1,47 @@
+<section id="start" style="background-color: #{{color.hex}} ">
+	<div class="saved">
+		<ul>
+			<li ng-repeat="color in saved">
+				<a class="color" style="background-color: #{{color}}"></a>
+			</li>
+		</ul>
+		<a class="save" ng-click="saveColor()"></a>
+	</div>
+	<div class="row center">
+		<div class="col small-12">
+			<div class="row">
+				<div class="col small-12 medium-6 medium-offset-3">
+					<form>
+						<input class="main" type="text" placeholder="Color code" ng-model="input.code" ng-class="{'valid-color' : input.valid}" />
+						<span class="type {{input.type}}"></span>
+					</form>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col small-12 medium-6 medium-offset-3">
+					<div class="results" ng-class="{'show': input.valid}">
+						<table>
+							<tr>
+								<td>input</td>
+								<td><strong>{{input.code}}</strong>
+								</td>
+							</tr>
+							<tr>
+								<td>hex</td>
+								<td><strong>#{{color.hex}}</strong></td>
+							</tr>
+							<tr>
+								<td>rgb</td>
+								<td><strong>{{color.rgb | commify }}</strong></td>
+							</tr>
+							<tr>
+								<td>cmyk</td>
+								<td><strong>{{color.cmyk | commify }}</strong></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
